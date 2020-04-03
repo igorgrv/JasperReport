@@ -182,7 +182,7 @@ Result:
 5. Add the file "SpendPerMonth.jrxml" inside the project folder (it's not inside the "lib" folder)
 
 6. Create the class ConnectionFactory
-```
+```java
 public class ConnectionFactory {
 
 	public Connection getConnection() {
@@ -196,7 +196,7 @@ public class ConnectionFactory {
 ```
 7. Create another class that will be responsible for generating the PDF.
 	  * **BEFORE**, it's necessary to change the language from "Groovy" to "Java" - to do that, open the .jrxml file and search for "language"
-```
+```java
 public class generateReportPDF {
 
 	public static void main(String[] args) throws JRException, FileNotFoundException {
