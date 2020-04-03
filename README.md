@@ -221,4 +221,14 @@ public class generateReportPDF {
 	
 }
 ```
+#### Understanding the code
+*  **JasperCompileManager** is the class responsible for compiling the jrxml file;
+   * Method **compileReportToFile** receives the .jrxml _(need to handle the JRException exception)_
+
+* **JasperFillManager** is the class responsible for filling out the report, which will return a **JasperPrint**
+   * The **fillReport** method receives:
+     * Jasper file: "SpendPerMonth.jasper"
+     * Parameter: As this example has no parameters, we will declare it as null;
+     * Connection;
     
+* To export to PDF, just use the class **JasperExportManager**, sending JasperPrint and the name of the file.
