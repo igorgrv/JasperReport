@@ -19,10 +19,36 @@ _If you have problems to open the iReport, check it out: [ireport-not-starting-u
 ### Template
 1. Select one of those templates and launch;
 2. Go to "Design Query" and type **select** * **from financial_movements**;
-3. Select all the fields (except by account_id and categories_id);
-4. Next and Finish;
+	*	It's possible to edit the query, as the image bellow
+4. Select all the fields (except by account_id and categories_id);
+5. Next and Finish;
 
+### PICTURE OF THE QUERY editingQuery
+
+You may see this setup
 <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/template.png?raw=true" alt="alt text" width="700" height="300">
 
 **Preview**
-<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/preview.PNG?raw=true" alt="alt text" width="500" height="300">
+Click on preview to see the document.
+<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/preview.PNG?raw=true" alt="alt text" width="400" height="200">
+
+## Changing the pattern
+
+1. Select the field;
+2. Go to Pattern (Text field properties);
+3. Type "dd/MM/yyyy" or use the assistent clicking on "..."
+![alt text](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/pattern.PNG?raw=true)
+
+## Creating a 'blank' report!
+1. Select a new 'blank' template;
+2. Follow the getting started;
+	* Select the fields, as the image bellow and group by 'owner'
+	* ### IMAGE WITH THE fieldstodetails.PNG
+3. Move the fields to "Detail"
+4. Decrease the space between the fields;
+	### IMAGE WITH THE decrease.PNG
+5. Add a **Title** and a **Page Header**
+	*	Pay attention: the Title** appears on the first page and the Page Header appears on all pages;
+	*	### IMAGE WITH THE PageStatic.PNG
+6. Add pagination (Page X of Y) and the current date (Current Date) to the **Page Footer**;
+7. Add into **Column Footer** and **Summary** the sum of the values for both fields to have the sum per page and have the total value on the last page;
