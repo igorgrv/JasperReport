@@ -12,7 +12,4 @@ _If you have problems to open the iReport, check it out: [ireport-not-starting-u
 ## Configurations
 ### DataSource
 
-
-![alt text](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/datasource.PNG?raw=true=10x10)
-
-![alt text](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/datasource.PNG?raw=true=100x100)
+<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/datasource.PNG?raw=true" alt="alt text" width="500" height="300">
