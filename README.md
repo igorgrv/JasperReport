@@ -71,3 +71,10 @@ Result:
 1. Select the field that will become "upperCase";
 2. Right-click and click on "Edit expression";  
 3. Select the field> add the method "toUpperCase ()";
+<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/uppercase.png?raw=true" alt="alt text" width="700" height="300">
+
+### Showing the first Letter/Abbreviation
+1. Select the field that will be abbreviated;
+2. Right-click and click on "Edit expression";  
+3. Select the field> add the method "substring (0 , 1)";
+<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/uppercase.png?raw=true" alt="alt text" width="700" height="300">
