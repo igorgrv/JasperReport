@@ -165,3 +165,60 @@ Result:
 ### Inserting PARAMETERS
 1. <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/parameter.png?raw=true" alt="alt text" width="600" height="300">
 2. <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/parameter2.png?raw=true" alt="alt text" width="500" height="300">
+
+## Generating a PDF report from a 'main' method
+
+1. To generate a PDF, it will be necessary to compile the files .jrxml (iReport) to .jasper (ReportEngine).
+2. Create a Simple Java Project;
+3. Download the  [MySQL connector](https://github.com/igorgrv/JasperReport/blob/master/SpendPerMonth_chart/SpendPerMonth/lib/mysql-connector-java-5.1.28-bin.jar);
+4. Open the folder _"iReport-5.6.0\ireport\modules\ext"_ and find the jars bellow. Paste into the project folder "lib" and "add to build path" :
+	  * itext
+	  * jasperreports-5.6.0
+	  * fjreechart
+	  * jcommon
+	  * commons-beanutils
+	  * commons-collections
+	  * commons-logging
+5. Add the file "SpendPerMonth.jrxml" inside the project folder (it's not inside the "lib" folder)
+
+6. Create the class ConnectionFactory
+```
+public class ConnectionFactory {
+
+	public Connection getConnection() {
+		try {
+			return DriverManager.getConnection("jdbc:mysql://localhost/jasperreport", "root", "");
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+}
+```
+7. Create another class that will be responsible for generating the PDF.
+	  * **BEFORE**, it's necessary to change the language from "Groovy" to "Java" - to do that, open the .jrxml file and search for "language"
+```
+public class generateReportPDF {
+
+	public static void main(String[] args) throws JRException, FileNotFoundException {
+
+		// Responsible for compiling the report
+		JasperCompileManager.compileReportToFile("SpendPerMonth.jrxml");
+
+		try {
+			Connection connection = new ConnectionFactory().getConnection();
+			
+			// This line is responsible for filling the report
+			JasperPrint jasperPrint = JasperFillManager.fillReport("SpendPerMonth.jasper", null, connection);
+
+			// Exporting to PDF
+			JasperExportManager.exportReportToPdfFile(jasperPrint, "Spend_per_month.pdf");
+
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}
+```
+    
