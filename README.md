@@ -20,16 +20,13 @@ _If you have problems to open the iReport, check it out: [ireport-not-starting-u
 1. Select one of those templates and launch;
 2. Go to "Design Query" and type **select** * **from financial_movements**;
 	*	It's possible to edit the query, as the image bellow
+	![editingQuery.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/editingQuery.PNG?raw=true)
 4. Select all the fields (except by account_id and categories_id);
 5. Next and Finish;
-
-### PICTURE OF THE QUERY editingQuery
-
-You may see this setup
+6. You should see the set up as in the image below:
 <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/template.png?raw=true" alt="alt text" width="700" height="300">
 
-**Preview**
-Click on preview to see the document.
+7. Click on **preview** to see the document.
 <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/preview.PNG?raw=true" alt="alt text" width="400" height="200">
 
 ## Changing the pattern
@@ -42,13 +39,20 @@ Click on preview to see the document.
 ## Creating a 'blank' report!
 1. Select a new 'blank' template;
 2. Follow the getting started;
-	* Select the fields, as the image bellow and group by 'owner'
-	* ### IMAGE WITH THE fieldstodetails.PNG
+	* Select the fields, as the and put group by 'owner'
 3. Move the fields to "Detail"
+![fieldstodetails.png](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/fieldstodetails.png?raw=true)
 4. Decrease the space between the fields;
-	### IMAGE WITH THE decrease.PNG
+![decrease.png](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/decrease.png?raw=true)
 5. Add a **Title** and a **Page Header**
-	*	Pay attention: the Title** appears on the first page and the Page Header appears on all pages;
-	*	### IMAGE WITH THE PageStatic.PNG
+	*	Pay attention: the Title appears on the first page and the Page Header appears on all pages;
+![decrease.png](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/staticPage.png?raw=true)
 6. Add pagination (Page X of Y) and the current date (Current Date) to the **Page Footer**;
 7. Add into **Column Footer** and **Summary** the sum of the values for both fields to have the sum per page and have the total value on the last page;
+8. Add a **Band** from the "Owner group Footer", this will make it show the expenses per owner
+![decrease.png](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/addBand.png?raw=true)
+9.  Add a **Report Group**, filtering the Date per month and then add the value to the **footer**
+![decrease.png](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/addReportGroup.png?raw=true)
+![decrease.png](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/addReportGroup2.png?raw=true)
+10. You should see the fields as in the image below
+![blankComplete.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/blankComplete.PNG?raw=true)
