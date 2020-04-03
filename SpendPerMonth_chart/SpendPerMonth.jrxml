@@ -3,7 +3,13 @@
 	<property name="ireport.zoom" value="1.7715610000000015"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<parameter name="START_DATE" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").parse("01/08/2012")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="END_DATE" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").parse("31/08/2012")]]></defaultValueExpression>
+	</parameter>
+	<queryString>
 		<![CDATA[SELECT
      transactions.`id` AS id,
      transactions.`date` AS date,
@@ -16,7 +22,8 @@ FROM
      `categories` categories INNER JOIN `transactions` transactions ON categories.`id` = transactions.`categories_id`
      INNER JOIN `account` account ON transactions.`account_id` = account.`id`
 WHERE
-     typeTransactions LIKE 'SAIDA'
+     typeTransactions LIKE 'SAIDA' AND
+	date BETWEEN $P{START_DATE} AND $P{END_DATE}
 ORDER BY
      account.`owner` ASC,
      transactions.`date` ASC]]>
@@ -66,6 +73,9 @@ ORDER BY
 		</groupHeader>
 		<groupFooter>
 			<band height="22">
+				<rectangle>
+					<reportElement x="0" y="0" width="572" height="21" backcolor="#99FFFF" uuid="dfe9f43e-853c-429a-b225-9c315f47aefd"/>
+				</rectangle>
 				<textField pattern="¤ #,##0.00">
 					<reportElement x="324" y="0" width="100" height="20" uuid="a4fd8a49-74ee-4f9a-a4ae-829bd91a6695"/>
 					<textElement textAlignment="Right"/>
@@ -78,6 +88,12 @@ ORDER BY
 		<groupExpression><![CDATA[$F{date}.getMonth()]]></groupExpression>
 		<groupFooter>
 			<band height="21">
+				<rectangle>
+					<reportElement x="0" y="0" width="572" height="21" backcolor="#99FFFF" uuid="3751b6b5-c070-4934-835f-e1ca0a6dccd4"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+				</rectangle>
 				<textField pattern="¤ #,##0.00">
 					<reportElement x="324" y="0" width="100" height="20" uuid="14b46b00-acfe-44b3-acff-0118edaf1730"/>
 					<textElement textAlignment="Right"/>
