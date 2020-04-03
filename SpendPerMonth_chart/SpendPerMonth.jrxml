@@ -53,10 +53,22 @@ ORDER BY
 	</variable>
 	<group name="owner">
 		<groupExpression><![CDATA[$F{owner}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField>
+					<reportElement x="0" y="0" width="572" height="25" uuid="a2757825-4c22-43af-9405-186827e87c10"/>
+					<textElement textAlignment="Center">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["ACCOUNT OF: " + $F{owner}.toUpperCase()]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
 		<groupFooter>
 			<band height="22">
 				<textField>
 					<reportElement x="324" y="0" width="100" height="20" uuid="a4fd8a49-74ee-4f9a-a4ae-829bd91a6695"/>
+					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$V{value_5}]]></textFieldExpression>
 				</textField>
 			</band>
@@ -68,6 +80,7 @@ ORDER BY
 			<band height="21">
 				<textField>
 					<reportElement x="324" y="0" width="100" height="20" uuid="14b46b00-acfe-44b3-acff-0118edaf1730"/>
+					<textElement textAlignment="Center"/>
 					<textFieldExpression><![CDATA[$V{value_1}]]></textFieldExpression>
 				</textField>
 			</band>
@@ -78,10 +91,16 @@ ORDER BY
 	</background>
 	<title>
 		<band height="36" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="36" forecolor="#FFFFFF" backcolor="#99FFFF" uuid="a0e4ee50-50bb-4c65-978e-65e3b0db81ea"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
 			<staticText>
 				<reportElement x="0" y="1" width="261" height="35" uuid="0fc5c21e-fc24-422a-ac55-c00ae0938d5a"/>
 				<textElement>
-					<font size="22" isBold="true" isUnderline="true"/>
+					<font size="22" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[BANK TRANSACTIONS]]></text>
 			</staticText>
@@ -91,7 +110,7 @@ ORDER BY
 		<band height="35" splitType="Stretch">
 			<staticText>
 				<reportElement x="190" y="0" width="180" height="35" uuid="42f68f8f-36ef-481e-b592-ca4a2e57c37d"/>
-				<textElement>
+				<textElement textAlignment="Justified">
 					<font size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Spends per Account]]></text>
@@ -102,52 +121,38 @@ ORDER BY
 		<band height="20" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="81" height="20" uuid="64c29423-7918-4631-aa02-d975517e24a1"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[id]]></text>
+				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="81" y="0" width="81" height="20" uuid="43a9c47b-7c6b-42fa-8255-612c075cc30e"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[date]]></text>
+				<text><![CDATA[DATE]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="162" y="0" width="81" height="20" uuid="527e8161-7ac2-4202-a5ca-91d0fe3e8c0a"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[description]]></text>
+				<text><![CDATA[DESCRIPTION]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="243" y="0" width="81" height="20" uuid="3fbb1ab3-5d21-43dd-b432-3a39bd7e1cc3"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[typeTransactions]]></text>
+				<text><![CDATA[TYPE]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="324" y="0" width="81" height="20" uuid="4c462333-1d4b-439e-90df-cad9b52f42bc"/>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[value]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="405" y="0" width="81" height="20" uuid="d899466b-2c44-4cc7-8ecb-4fdb3e9e5c26"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[owner]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="486" y="0" width="81" height="20" uuid="a967f81d-58d8-4561-9f10-cc0b7d8c6edf"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[name]]></text>
+				<text><![CDATA[VALUE]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -155,31 +160,28 @@ ORDER BY
 		<band height="22" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="81" height="20" uuid="c417c866-95b5-445e-b251-88c24891506b"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="81" y="0" width="81" height="20" uuid="9582aafc-b2f9-4d07-942d-5366d484c4cc"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="162" y="0" width="81" height="20" uuid="50aee1c4-3bfa-4673-8176-538c9c95562a"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="243" y="0" width="81" height="20" uuid="55e4f34a-1a18-495c-a46a-150c4764ac87"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{typeTransactions}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="324" y="0" width="81" height="20" uuid="04b6294c-32a6-454a-ae01-d0abf1cb8698"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{value}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="405" y="0" width="81" height="20" uuid="c4bc6964-a41d-41d8-a0d7-0cb635768064"/>
-				<textFieldExpression><![CDATA[$F{owner}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="486" y="0" width="81" height="20" uuid="fa4f53af-00ee-4958-9656-c06faa403f9d"/>
-				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -187,15 +189,17 @@ ORDER BY
 		<band height="21" splitType="Stretch">
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="0" y="0" width="100" height="20" uuid="57770467-6490-4602-a3e3-3da0967ec9a3"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="454" y="1" width="80" height="20" uuid="f8732bf0-1a98-4007-9041-7f39fc0d29d6"/>
-				<textElement textAlignment="Right"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="534" y="1" width="40" height="20" uuid="f30a220c-4564-4850-abec-4a82fcda7f08"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -204,6 +208,7 @@ ORDER BY
 		<band height="22" splitType="Stretch">
 			<textField>
 				<reportElement x="324" y="0" width="100" height="20" uuid="4d84c6c4-00ea-4d28-a614-e5989eacd764"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$V{value_2}]]></textFieldExpression>
 			</textField>
 		</band>

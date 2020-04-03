@@ -56,3 +56,18 @@ _If you have problems to open the iReport, check it out: [ireport-not-starting-u
 ![decrease.png](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/addReportGroup2.png?raw=true)
 10. You should see the fields as in the image below
 ![blankComplete.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/blankComplete.PNG?raw=true)
+
+## Formatting and adjustments
+### Creating a background
+1. In "palette", add a rectangle to the title and change the color;
+2. In "formatting tools windows" -> "adapt to parent"
+3. In "Report Inspector" select the rectangle and "send to back"
+<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/background.png?raw=true" alt="alt text" width="700" height="200">
+Result:
+<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/background2.png?raw=true" alt="alt text" width="700" height="200">
+
+### Formatting to UPPERCASE
+  
+1. Select the field that will become "upperCase";
+2. Right-click and click on "Edit expression";  
+3. Select the field> add the method "toUpperCase ()";
