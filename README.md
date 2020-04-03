@@ -161,3 +161,7 @@ Result:
 2. Right-click and click on "Edit expression";  
 3. Select the field> add the method "substring (0 , 1)";
 <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/abreviation.png?raw=true" alt="alt text" width="300" height="300">
+
+### Inserting PARAMETERS
+1. <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/parameter.png?raw=true" alt="alt text" width="600" height="300">
+2. <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/parameter2.png?raw=true" alt="alt text" width="500" height="300">
