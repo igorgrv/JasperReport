@@ -20,28 +20,6 @@ _If you have problems to open the iReport, check it out: [ireport-not-starting-u
 1. Select one of those templates and launch;
 2. Go to "Design Query" and type **select** * **from financial_movements**;
 	*	It's possible to edit the query, as the image bellow
-	# Jasper Report
-This project is an example of an use of a Report Engine, called iReport. With this Report Design, we can create layouts containing charts, images, subreports, crosstabs and much more. We can access data through JDBC, Hibernate, CSV, and custom sources. Then we also can publish our reports as PDF, XML, XLS, CSV, text or DOCX.
-
-## Set up
-1. Download [Java 7](https://www.oracle.com/java/technologies/javase/javase7-archive-downloads.html) -windows-x64.tar.gz version _(it's necessary to use the iReport)_;
-2. Download [iReport Designer](https://community.jaspersoft.com/project/ireport-designer/releases) - .zip version;
-3. Download the  - [finances.sql](https://github.com/igorgrv/JasperReport/blob/master/finances.sql)
-4. Open the app - /bin/ireport.exe
-
-_If you have problems to open the iReport, check it out: [ireport-not-starting-using-jre-8](https://stackoverflow.com/questions/23902977/ireport-not-starting-using-jre-8)_
-
-## Getting started
-### DataSource
-1. Open the dataSource as the image bellow:
-<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/datasource.PNG?raw=true" alt="alt text" width="650" height="400">
-2. Write a name, select the location of the localhost and put the User/Pass;
-3. Test the Connection;
-
-### Template
-1. Select one of those templates and launch;
-2. Go to "Design Query" and type **select** * **from financial_movements**;
-	*	It's possible to edit the query, as the image bellow
 	<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/editingQuery.PNG?raw=true" alt="alt text" width="400" height="300">
 	
 4. Select all the fields (except by account_id and categories_id);
@@ -279,3 +257,111 @@ public class ReportGeneratorTest {
 	}
 }
 ```
+## JasperReport WEBServlet - PDF
+
+![reportWeb.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/reportWeb.PNG?raw=true)
+
+ReportServlet:
+```java
+@WebServlet("/transactions")
+public class ReportServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		try {
+			//Because the .jasper is inside the folder "jasper", we need to use the method .getRealPath
+			String name = request.getServletContext().getRealPath("WEB-INF/jasper/SpendPerMonth.jasper") ;
+			
+			Map<String, Object> parameter = new HashMap<String, Object>();
+			Connection connection = new ConnectionFactory().getConnection();
+			
+			//Mapping the parameters from the form
+			String startDate = request.getParameter("start_date");
+			String endDate = request.getParameter("end_date");
+			String type = request.getParameter("type");
+			
+			//Transforming the string provides from the form, to Date
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date startDateParse = sdf.parse(startDate);
+			Date endDateParse = sdf.parse(endDate);
+			
+			//Mapping the parameters from the iReport
+			parameter.put("START_DATE", startDateParse);
+			parameter.put("END_DATE", endDateParse);
+			parameter.put("TYPE", type);
+			
+			ReportGenerator generator = new ReportGenerator(name, parameter, connection);
+			generator.ReportGeneratorPDF(response.getOutputStream());
+			
+			connection.close();
+		} catch (SQLException | ParseException e) {
+			throw new ServletException(e);
+		}
+	}
+}
+```
+ReportGenerator:
+```java
+public class ReportGenerator {
+
+	private String jasperName;
+	private Map<String, Object> parameter;
+	private Connection connection;
+	
+	public ReportGenerator(String jasperName, Map<String, Object> parameter, Connection connection) {
+		this.jasperName = jasperName;
+		this.parameter = parameter;
+		this.connection = connection;
+	}
+	
+	public void ReportGeneratorPDF(OutputStream outputStream) {
+		try {
+			JasperPrint jasperPrint = JasperFillManager.fillReport(this.jasperName, this.parameter, this.connection);
+			
+			JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}
+```
+form.jsp:
+```html
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+</head>
+<body>
+
+<form action="transactions" method="POST">
+	<h1>Report</h1>
+	Start Date: <input type="text" name="start_date"> <br/>
+	End Date: <input type="text" name="end_date"> <br/>
+	<br/>
+	Search by the transaction type: <br>
+    <input type="radio" name="type" value="ENTRADA" checked="checked">Cash in
+    <input type="radio" name="type" value="SAIDA">Cash out<br>
+
+    <br>
+	<input type="submit" value="Generate your report!" />
+
+</form>
+</body>
+</html>
+```
+
+## collapsible markdown?
+
+<details><summary>CLICK ME</summary>
+<p>
+
+#### yes, even hidden code blocks!
+
+```python
+print("hello world!")
+```
+
+</p>
+</details>
