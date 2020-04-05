@@ -257,8 +257,9 @@ public class ReportGeneratorTest {
 	}
 }
 ```
-## JasperReport WEBServlet - PDF
 
+## <details><summary> JasperReport WEBServlet - PDF</summary>
+<p>
 ![reportWeb.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/reportWeb.PNG?raw=true)
 
 ReportServlet:
@@ -351,17 +352,4 @@ form.jsp:
 </body>
 </html>
 ```
-
-## collapsible markdown?
-
-<details><summary>CLICK ME</summary>
-<p>
-
-#### yes, even hidden code blocks!
-
-```python
-print("hello world!")
-```
-
 </p>
-</details>
