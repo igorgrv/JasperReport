@@ -232,3 +232,50 @@ public class generateReportPDF {
      * Connection;
     
 * To export to PDF, just use the class **JasperExportManager**, sending JasperPrint and the name of the file.
+
+## Encapsulating the PDF Generator
+
+Just create a class with the methods and call it in a "main" class;
+```java
+public class ReportGenerator {
+
+	private String jasperName;
+	private Map<String, Object> parameter;
+	private Connection connection;
+	
+	//constructor
+	public ReportGenerator(String jasperName, Map<String, Object> parameter, Connection connection) {
+		this.jasperName = jasperName;
+		this.parameter = parameter;
+		this.connection = connection;
+	}
+	
+	//method
+	public void ReportGeneratorPDF(String PDFname) {
+		try {
+			JasperPrint jasperPrint = JasperFillManager.fillReport(this.jasperName, this.parameter, this.connection);
+			
+			JasperExportManager.exportReportToPdfFile(jasperPrint, PDFname);
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+	}	
+}
+```
+Main method:
+```java
+public class ReportGeneratorTest {
+
+	public static void main(String[] args) throws JRException {
+		
+//		JasperCompileManager.compileReportToFile("SpendPerMonth.jrxml");
+		
+		String jasperName = "SpendPerMonth";
+		Map<String, Object> parameter = new HashMap<String, Object>();
+		Connection connection = new ConnectionFactory().getConnection();
+		
+		ReportGenerator generator = new ReportGenerator(jasperName + ".jasper", parameter, connection);
+		generator.ReportGeneratorPDF(jasperName+ ".pdf");
+	}
+}
+```
