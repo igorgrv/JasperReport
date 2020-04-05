@@ -258,8 +258,8 @@ public class ReportGeneratorTest {
 }
 ```
 
-
-## <details><summary>JasperReport WEBServlet - PDF</summary>
+<details>
+## <summary>JasperReport WEBServlet - PDF</summary>
 
 ![reportWeb.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/reportWeb.PNG?raw=true)
 
