@@ -258,9 +258,10 @@ public class ReportGeneratorTest {
 }
 ```
 
-## JasperReport WEBServlet - PDF
-<details><summary>  Teste</summary>
-<p>
+
+## <details>JasperReport WEBServlet - PDF<summary> </summary>
+
+
 ![reportWeb.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/reportWeb.PNG?raw=true)
 
 ReportServlet:
@@ -353,5 +354,4 @@ form.jsp:
 </body>
 </html>
 ```
-</p>
 </details>
