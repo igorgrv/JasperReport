@@ -220,12 +220,8 @@ public class ReportGeneratorTest {
 ```
 
 
-<<<<<<< HEAD
-## <a name="jasperweb"></a>JasperReport WEBServlet - PDF
-=======
-## <a name="teste"></a>JasperReport WEBServlet - PDF
->>>>>>> fa5091db25c1f56f0ac079bde2bf9eb48153236d
 
+## <a name="jasperweb"></a>JasperReport WEBServlet - PDF
 
 ![reportWeb.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/reportWeb.PNG?raw=true)
 
@@ -318,8 +314,4 @@ form.jsp:
 </form>
 </body>
 </html>
-<<<<<<< HEAD
 ```
-=======
-```
->>>>>>> fa5091db25c1f56f0ac079bde2bf9eb48153236d
