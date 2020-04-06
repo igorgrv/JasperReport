@@ -11,6 +11,11 @@ This project is an example of an use of a Report Engine, called iReport. With th
 7. [JasperReport WEBServlet - PDF](#jasperweb)
 
 ## <a name="setup"></a>Set up
+=======
+[link](#teste)
+
+## Set up
+>>>>>>> fa5091db25c1f56f0ac079bde2bf9eb48153236d
 1. Download [Java 7](https://www.oracle.com/java/technologies/javase/javase7-archive-downloads.html) -windows-x64.tar.gz version _(it's necessary to use the iReport)_;
 2. Download [iReport Designer](https://community.jaspersoft.com/project/ireport-designer/releases) - .zip version;
 3. Download the  - [finances.sql](https://github.com/igorgrv/JasperReport/blob/master/finances.sql)
@@ -219,7 +224,11 @@ public class ReportGeneratorTest {
 ```
 
 
+<<<<<<< HEAD
 ## <a name="jasperweb"></a>JasperReport WEBServlet - PDF
+=======
+## <a name="teste"></a>JasperReport WEBServlet - PDF
+>>>>>>> fa5091db25c1f56f0ac079bde2bf9eb48153236d
 
 
 ![reportWeb.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/reportWeb.PNG?raw=true)
@@ -313,4 +322,8 @@ form.jsp:
 </form>
 </body>
 </html>
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> fa5091db25c1f56f0ac079bde2bf9eb48153236d
