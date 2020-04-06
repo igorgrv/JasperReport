@@ -1,7 +1,16 @@
 # Jasper Report
 This project is an example of an use of a Report Engine, called iReport. With this Report Design, we can create layouts containing charts, images, subreports, crosstabs and much more. We can access data through JDBC, Hibernate, CSV, and custom sources. Then we also can publish our reports as PDF, XML, XLS, CSV, text or DOCX.
 
-## Set up
+## Summary
+1. [Set up](#setup)
+2. [Getting started](#started)
+3. [Formatting and adjustments](#format)
+4. [Creating a 'blank' report!](#creat)
+5. [Generating a PDF report from a 'main' method](#generat)
+6. [Encapsulating the PDF Generator](#encaps)
+7. [JasperReport WEBServlet - PDF](#jasperweb)
+
+## <a name="setup"></a>Set up
 1. Download [Java 7](https://www.oracle.com/java/technologies/javase/javase7-archive-downloads.html) -windows-x64.tar.gz version _(it's necessary to use the iReport)_;
 2. Download [iReport Designer](https://community.jaspersoft.com/project/ireport-designer/releases) - .zip version;
 3. Download the  - [finances.sql](https://github.com/igorgrv/JasperReport/blob/master/finances.sql)
@@ -9,7 +18,7 @@ This project is an example of an use of a Report Engine, called iReport. With th
 
 _If you have problems to open the iReport, check it out: [ireport-not-starting-using-jre-8](https://stackoverflow.com/questions/23902977/ireport-not-starting-using-jre-8)_
 
-## Getting started
+## <a name="started"></a>Getting started
 ### DataSource
 1. Open the dataSource as the image bellow:
 <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/datasource.PNG?raw=true" alt="alt text" width="650" height="400">
@@ -37,31 +46,7 @@ _If you have problems to open the iReport, check it out: [ireport-not-starting-u
 3. Type "dd/MM/yyyy" or use the assistent clicking on "..."
 ![alt text](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/pattern.PNG?raw=true)
 
-## Creating a 'blank' report!
-1. Select a new 'blank' template;
-2. Follow the getting started;
-	* Select the fields, as the and put group by 'owner'
-3. Move the fields to "Detail"
-<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/fieldstodetails.png?raw=true" alt="alt text" width="400" height="200">
-
-4. Decrease the space between the fields;
-<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/decrease.png?raw=true" alt="alt text" width="400" height="200">
-
-6. Add a **Title** and a **Page Header**
-	*	Pay attention: the Title appears on the first page and the Page Header appears on all pages;
-<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/staticPage.png?raw=true" alt="alt text" width="400" height="200">
-
-7. Add pagination (Page X of Y) and the current date (Current Date) to the **Page Footer**;
-8. Add into **Column Footer** and **Summary** the sum of the values for both fields to have the sum per page and have the total value on the last page;
-9. Add a **Band** from the "Owner group Footer", this will make it show the expenses per owner
-![decrease.png](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/addBand.png?raw=true)
-10.  Add a **Report Group**, filtering the Date per month and then add the value to the **footer**
-![decrease.png](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/addReportGroup.png?raw=true)
-![decrease.png](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/addReportGroup2.png?raw=true)
-11. You should see the fields as in the image below
-![blankComplete.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/blankComplete.PNG?raw=true)
-
-## Formatting and adjustments
+## <a name="format"></a> Formatting and adjustments
 ### Creating a background
 1. In "palette", add a rectangle to the title and change the color;
 2. In "formatting tools windows" -> "adapt to parent"
@@ -90,14 +75,14 @@ Result:
 7. Click on **preview** to see the document.
 <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/preview.PNG?raw=true" alt="alt text" width="400" height="200">
 
-## Changing the pattern
+### Changing the pattern
 
 1. Select the field;
 2. Go to Pattern (Text field properties);
 3. Type "dd/MM/yyyy" or use the assistent clicking on "..."
 ![alt text](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/pattern.PNG?raw=true)
 
-## Creating a 'blank' report!
+## <a name="creat"></a>Creating a 'blank' report!
 1. Select a new 'blank' template;
 2. Follow the getting started;
 	* Select the fields, as the and put group by 'owner'
@@ -118,33 +103,8 @@ Result:
 10. You should see the fields as in the image below
 ![blankComplete.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/blankComplete.PNG?raw=true)
 
-## Formatting and adjustments
-### Creating a background
-1. In "palette", add a rectangle to the title and change the color;
-2. In "formatting tools windows" -> "adapt to parent"
-3. In "Report Inspector" select the rectangle and "send to back"
-<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/background.png?raw=true" alt="alt text" width="700" height="200">
-Result:
-<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/background2.png?raw=true" alt="alt text" width="700" height="200">
 
-### Formatting to UPPERCASE
-  
-1. Select the field that will become "upperCase";
-2. Right-click and click on "Edit expression";  
-3. Select the field> add the method "toUpperCase ()";
-<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/uppercase.png?raw=true" alt="alt text" width="700" height="300">
-
-### Showing the first Letter/Abbreviation
-1. Select the field that will be abbreviated;
-2. Right-click and click on "Edit expression";  
-3. Select the field> add the method "substring (0 , 1)";
-<img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/abreviation.png?raw=true" alt="alt text" width="300" height="300">
-
-### Inserting PARAMETERS
-1. <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/parameter.png?raw=true" alt="alt text" width="600" height="300">
-2. <img src="https://github.com/igorgrv/JasperReport/blob/master/readmeImages/parameter2.png?raw=true" alt="alt text" width="500" height="300">
-
-## Generating a PDF report from a 'main' method
+## <a name="generat"></a>Generating a PDF report from a 'main' method
 
 1. To generate a PDF, it will be necessary to compile the files .jrxml (iReport) to .jasper (ReportEngine).
 2. Create a Simple Java Project;
@@ -211,7 +171,7 @@ public class generateReportPDF {
     
 * To export to PDF, just use the class **JasperExportManager**, sending JasperPrint and the name of the file.
 
-## Encapsulating the PDF Generator
+## <a name="encaps"></a>Encapsulating the PDF Generator
 
 Just create a class with the methods and call it in a "main" class;
 ```java
@@ -258,9 +218,10 @@ public class ReportGeneratorTest {
 }
 ```
 
-## JasperReport WEBServlet - PDF
-<details><summary>  Teste</summary>
-<p>
+
+## <a name="jasperweb"></a>JasperReport WEBServlet - PDF
+
+
 ![reportWeb.PNG](https://github.com/igorgrv/JasperReport/blob/master/readmeImages/reportWeb.PNG?raw=true)
 
 ReportServlet:
@@ -353,5 +314,3 @@ form.jsp:
 </body>
 </html>
 ```
-</p>
-</details>
